@@ -5,5 +5,9 @@
 </ion-header>
 
 <ion-content>
-<ion-button color="gray" (click)="logoutAction()"></ion-button>
+  <ion-card>
+    <ion-button class="ion-no-margin" expand="block" shape="round" (click)="viewProfile()">My Profile</ion-button>
+  </ion-card>
+  <ion-button class="logout-btn" shape="round" (click)="logout()">Logout</ion-button>
+<!-- <ion-button color="gray" (click)="logoutAction()"></ion-button> -->
 </ion-content>

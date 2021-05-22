@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/settings"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-row>
+      <ion-col class="ion-margin-start" sm-size="3">
+        <ion-thumbnail class="ion-margin">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col>
+        <ion-text color="secondary">
+          <h2 class="ion-padding-start ion-padding-end">{{user?.userName}}</h2>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+
+    <p class="ion-padding-start">{{user?.userEmail}}</p>
+    <p class="ion-padding-start">{{user?.userPhone}}</p>
+    <p class="ion-padding-start">{{user?.createdAt | date}}</p>
+
+    <div class="ion-text-center ion-padding-bottom">
+      <ion-button (click)="editProfile()">
+        <ion-icon name="ellipsis-horizontal-outline" class="ion-padding-end"></ion-icon>
+        Edit Profile
+      </ion-button>
+    </div>
+  </ion-card>
+
+
+
+</ion-content>

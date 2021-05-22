@@ -13,6 +13,32 @@
   <form>
     <ion-list>
       <ion-item>
+        <ion-label position="stacked">Full name</ion-label>
+        <ion-input required type="text" [(ngModel)]="name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input required type="email" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Phone</ion-label>
+        <ion-input required type="tel" [(ngModel)]="phone" name="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input required type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        Already have an account?
+        <a routerLink='/login'>Sign in</a>
+      </ion-item>
+    </ion-list>
+    <ion-button class="signup-btn" type="submit" expand="block" shape="round" (click)="register()">Register</ion-button>
+  </form>
+
+  <!-- <form>
+    <ion-list>
+      <ion-item>
         <ion-label position="stacked">Email</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
@@ -34,5 +60,5 @@
 
     </ion-list>
     <ion-button class="signup-btn" expand="block" shape="round" color="success">Sign up</ion-button>
-  </form>
+  </form> -->
 </ion-content>

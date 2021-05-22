@@ -11,12 +11,12 @@ export class HttpService {
     private http: HttpClient
   ) { }
 
-  post(serviceName: string, data: any) {
-    const headers = new HttpHeaders();
-    const options = { header: headers, withCredentials: false};
+  // post(serviceName: string, data: any) {
+  //   const headers = new HttpHeaders();
+  //   const options = { header: headers, withCredentials: false};
 
-    const url = environment.apiUrl + serviceName;
+  //   const url = environment.apiUrl + serviceName;
 
-    return this.http.post(url, JSON.stringify(data), options);
-  }
+  //   return this.http.post(url, JSON.stringify(data), options);
+  // }
 }

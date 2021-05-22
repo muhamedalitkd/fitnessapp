@@ -1,3 +1,4 @@
+import { AuthGuard } from './../guards/auth.guard';
 import { IndexGuard } from './../guards/index.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,7 +9,8 @@ const routes: Routes = [
   {
     path: '',
     component: IndexPage,
-    canActivate: [IndexGuard],
+    // canActivate: [IndexGuard],
+    // ,canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -22,6 +24,21 @@ const routes: Routes = [
         path: 'signup',
         loadChildren: () => import('../pages/signup/signup.module').then(m => m.SignupPageModule)
       },
+      {
+        path: 'forgot-password',
+        loadChildren: () => import('../pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+        ,canActivate: [AuthGuard]
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../pages/profile/profile.module').then( m => m.ProfilePageModule)
+        ,canActivate: [AuthGuard]
+      },
+      {
+        path: 'profile-edit',
+        loadChildren: () => import('../pages/profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+        ,canActivate: [AuthGuard]
+      }
     ]
   }
 ];

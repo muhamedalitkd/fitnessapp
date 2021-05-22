@@ -13,6 +13,29 @@
   <form>
     <ion-list>
       <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+      <ion-item lines="none">
+        <a routerLink='/signup'>Create Account</a>
+      </ion-item>
+      <div class="text-align: center">
+        <p><a [routerLink]="['/forgot-password']">Forgot Password</a></p>
+      </div>
+    <ion-button class="login-btn" expand="block" shape="round" type="submit" (click)="login()">Login</ion-button>
+  </form>
+
+
+
+  <!-- <form>
+    <ion-list>
+      <ion-item>
         <ion-label position="stacked">Username</ion-label>
         <ion-input type="text" autocomplete="off" name="username" [(ngModel)]="postData.username"></ion-input>
       </ion-item>
@@ -29,5 +52,5 @@
     </ion-list>
     <ion-button class="login-btn" expand="block" shape="round" color="success" (click)="loginAction()">Login</ion-button>
 
-  </form>
+  </form> -->
 </ion-content>
