@@ -38,6 +38,11 @@ const routes: Routes = [
         path: 'profile-edit',
         loadChildren: () => import('../pages/profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
         ,canActivate: [AuthGuard]
+      },
+      {
+        path: '',
+        redirectTo: '/home/feed',
+        pathMatch: 'full'
       }
     ]
   }

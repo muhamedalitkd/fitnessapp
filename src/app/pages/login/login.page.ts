@@ -1,4 +1,5 @@
-import { ToastController } from '@ionic/angular';
+import { ForgotPasswordPage } from './../forgot-password/forgot-password.page';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ToastService } from './../../services/toast.service';
 import { AuthConstants } from './../../config/auth-constants';
 import { StorageService } from './../../services/storage.service';
@@ -16,11 +17,20 @@ export class LoginPage implements OnInit {
   password: string;
 
   constructor(
+    public modalCtrl: ModalController,
     private auth: AuthService,
     private toastr: ToastController
   ) { }
 
   ngOnInit() {
+  }
+
+  async forgotPassword() {
+    const modal = await this.modalCtrl.create({
+      component: ForgotPasswordPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
   }
 
   login() {

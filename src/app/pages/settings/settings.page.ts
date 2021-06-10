@@ -1,6 +1,8 @@
+import { ProfilePage } from './../profile/profile.page';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings',
@@ -10,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class SettingsPage implements OnInit {
 
   constructor(
+    public modalCtrl: ModalController,
     private auth: AuthService,
     private router: Router,
   ) { }
@@ -21,9 +24,17 @@ export class SettingsPage implements OnInit {
      this.auth.signOut();
    }
 
-   viewProfile() {
-    this.router.navigate(['/profile']);
-   }
+  //  viewProfile() {
+  //   this.router.navigate(['/profile']);
+  //  }
+
+   async viewProfile() {
+    const modal = await this.modalCtrl.create({
+      component: ProfilePage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
   // logoutAction() {
   //   this.authService.logout();
   // }

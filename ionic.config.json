@@ -1,7 +1,8 @@
 {
   "name": "fitnessapp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

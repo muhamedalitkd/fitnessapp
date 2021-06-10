@@ -1,6 +1,8 @@
+import { ProfileEditPage } from './../profile-edit/profile-edit.page';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +14,7 @@ export class ProfilePage implements OnInit {
 
 
   constructor(
+    public modalCtrl: ModalController,
     private auth: AuthService,
     private router: Router
   ) { }
@@ -22,8 +25,19 @@ export class ProfilePage implements OnInit {
     })
   }
 
-  editProfile() {
-    this.router.navigate(['/profile-edit']);
+  closeModal() {
+    this.modalCtrl.dismiss();
+}
+
+  // editProfile() {
+  //   this.router.navigate(['/profile-edit']);
+  // }
+  async editProfile() {
+    const modal = await this.modalCtrl.create({
+      component: ProfileEditPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
   }
 
 }

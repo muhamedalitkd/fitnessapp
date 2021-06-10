@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>My Profile</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home/settings"></ion-back-button>
+    <!-- <ion-title>My Profile</ion-title> -->
+    <ion-buttons class="ion-margin">
+        <ion-title style="text-align:center">My Profile</ion-title>
+        <ion-button (click)="closeModal()">
+          <ion-icon size="large" name="close-outline"></ion-icon>
+        </ion-button>
     </ion-buttons>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/settings"></ion-back-button>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 

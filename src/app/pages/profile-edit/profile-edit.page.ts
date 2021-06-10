@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +17,7 @@ export class ProfileEditPage implements OnInit {
 
 
   constructor(
+    public modalCtrl: ModalController,
     private auth: AuthService,
     private afs: AngularFirestore,
     private loadginCtrl: LoadingController,
@@ -32,6 +33,10 @@ export class ProfileEditPage implements OnInit {
       this.phone = user.userPhone;
     })
   }
+
+  closeModal() {
+    this.modalCtrl.dismiss();
+}
 
   async update() {
     const loading = await this.loadginCtrl.create({
@@ -50,7 +55,7 @@ export class ProfileEditPage implements OnInit {
     .then(() => {
       loading.dismiss();
       this.toast('Update success', 'success');
-      this.router.navigate(['/profile']);
+      // this.router.navigate(['/profile']);
     })
     .catch(error => {
       loading.dismiss();

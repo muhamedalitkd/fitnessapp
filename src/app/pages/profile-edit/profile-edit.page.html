@@ -1,14 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Edit Profile</ion-title>
+    <!-- <ion-title>Edit Profile</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons> -->
+    <ion-buttons class="ion-margin">
+      <ion-title style="text-align:center">Edit Profile</ion-title>
+        <ion-button (click)="closeModal()">
+          <ion-icon size="large" name="close-outline"></ion-icon>
+        </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
     <form>
       <ion-list>
         <ion-item>
@@ -24,8 +29,7 @@
           <ion-input required type="tel" [(ngModel)]="phone" name="phone"></ion-input>
         </ion-item>
       </ion-list>
-      <ion-button class="signup-btn" type="submit" expand="block" shape="round" (click)="update()">Update</ion-button>
+      <ion-button class="signup-btn ion-margin-top" type="submit" expand="block" shape="round" (click)="update()">Update</ion-button>
     </form>
-  </ion-card>
 
 </ion-content>
