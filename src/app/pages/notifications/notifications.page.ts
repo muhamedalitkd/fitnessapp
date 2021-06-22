@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Posts } from 'src/app/interfaces/posts';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -20,7 +21,8 @@ export class NotificationsPage implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
-
+    private loadginCtrl: LoadingController,
+    private toastr: ToastController,
   ) { }
 
   ngOnInit() {
@@ -37,11 +39,34 @@ export class NotificationsPage implements OnInit {
   }
 
   async upload() {
+    const loading = await this.loadginCtrl.create({
+      message: 'Uploading...',
+      spinner: 'crescent',
+      showBackdrop: true
+    })
+
+    loading.present();
     this.afs.collection('user').doc(this.userID).set(
       {'videoLink': this.videoLink}, {merge: true}).then(() => {
       console.log("The link is added " + this.userID);
       return null;
+    }).then(() => {
+      loading.dismiss();
+      this.toast('Upload success', 'success');
+    }).catch(error => {
+      loading.dismiss();
+      this.toast(error.message, 'danger');
     })
-  }
+  };
 
+  async toast(message, status) {
+    const toast = await this.toastr.create({
+      message: message,
+      color: status,
+      position: 'top',
+      duration: 2000
+    });
+
+    toast.present();
+  }
 }

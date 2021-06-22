@@ -6,14 +6,17 @@
 
 <ion-content>
       <ion-card class="ion-no-margin ion-no-padding" *ngFor="let post of posts$ | async as posts">
-        <ng-container *ngIf="posts.length > 0, else skeleton"></ng-container>
+        <ng-container *ngIf="posts.length > 0, else skeleton">
         <ion-card-content *ngIf="post.videoLink" class="ion-no-padding ion-no-margin">
           <ion-card-header>
-            <ion-card-title>{{post.userName}}</ion-card-title>
+            <ion-card-title class="ion-text-center">{{post.userName}}</ion-card-title>
           </ion-card-header>
-        <iframe width="255" height="170" [src]="sanitizer(post.videoLink)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </ion-card-content>
+          <div class="ion-text-center">
 
+            <iframe width="255" height="170" [src]="sanitizer(post.videoLink)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+      </ion-card-content>
+    </ng-container>
       <ng-template #skeleton>
         <ion-list>
           <ion-item *ngFor="let item of [1, 2, 3, 4, 5]">
