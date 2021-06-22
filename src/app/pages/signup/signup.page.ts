@@ -44,6 +44,7 @@ export class SignupPage implements OnInit {
           'userName': this.name,
           'userEmail': this.email,
           'userPhone': this.phone,
+          'password': this.password,
           'createdAt': Date.now()
         })
         .then(() => {

@@ -22,6 +22,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.auth.user$.subscribe(user => {
       this.user = user
+      console.log(user);
     })
   }
 
@@ -29,9 +30,6 @@ export class ProfilePage implements OnInit {
     this.modalCtrl.dismiss();
 }
 
-  // editProfile() {
-  //   this.router.navigate(['/profile-edit']);
-  // }
   async editProfile() {
     const modal = await this.modalCtrl.create({
       component: ProfileEditPage,

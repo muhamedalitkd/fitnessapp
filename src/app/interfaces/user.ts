@@ -5,4 +5,5 @@ export interface User {
   userPhone: string;
   userPhoto: string;
   createdAt: number;
+  videoLink: string;
 }

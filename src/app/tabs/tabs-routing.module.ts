@@ -2,6 +2,7 @@ import { FeedPageModule } from './../pages/feed/feed.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,20 +10,23 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'feed',
         loadChildren: () => import('../pages/feed/feed.module').then(m => m.FeedPageModule)
+        ,canActivate: [AuthGuard]
       },
       {
-        path: 'tab2',
+        path: 'notifications',
         loadChildren: () => import('../pages/notifications/notifications.module').then(m => m.NotificationsPageModule)
+        ,canActivate: [AuthGuard]
       },
       {
-        path: 'tab3',
+        path: 'settings',
         loadChildren: () => import('../pages/settings/settings.module').then(m => m.SettingsPageModule)
+        ,canActivate: [AuthGuard],
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/feed',
         pathMatch: 'full'
       }
     ]

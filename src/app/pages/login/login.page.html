@@ -1,20 +1,19 @@
-<ion-header>
-  <ion-toolbar color="gray">
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
   <div class="center logo">
     <app-logo></app-logo>
-  <h1>Sign in</h1>
+  <h1>Login</h1>
   </div>
 
   <form>
     <ion-list>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label position="stacked">Email</ion-label>
         <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input type="text" [(ngModel)]="userName" name="userName"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Password</ion-label>
@@ -25,32 +24,10 @@
       <ion-item lines="none">
         <a routerLink='/signup'>Create Account</a>
       </ion-item>
-      <div class="text-align: center">
-        <p><a (click)="forgotPassword()">Forgot Password</a></p>
+      <div class="center">
+        <button class="forgot-password-btn" (click)="forgotPassword()">Forgot Password</button>
       </div>
     <ion-button class="login-btn" expand="block" shape="round" type="submit" (click)="login()">Login</ion-button>
   </form>
 
-
-
-  <!-- <form>
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input type="text" autocomplete="off" name="username" [(ngModel)]="postData.username"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" autocomplete="off" name="password" [(ngModel)]="postData.password"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none">
-        <a routerLink='/signup'>Create Account</a>
-      </ion-item>
-
-    </ion-list>
-    <ion-button class="login-btn" expand="block" shape="round" color="success" (click)="loginAction()">Login</ion-button>
-
-  </form> -->
 </ion-content>

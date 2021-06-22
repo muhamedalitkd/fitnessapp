@@ -23,20 +23,24 @@ import { AuthService } from './services/auth.service';
 
 // AuthGuard
 import { AuthGuard } from './guards/auth.guard';
-
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  imports: [
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule],
+    AngularFireStorageModule,
+    AngularFireFunctionsModule
+  ],
   providers: [
     AuthService,
     AuthGuard,
-    HttpClientModule, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    HttpClientModule, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

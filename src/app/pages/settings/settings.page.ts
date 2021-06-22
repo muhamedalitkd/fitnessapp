@@ -24,10 +24,6 @@ export class SettingsPage implements OnInit {
      this.auth.signOut();
    }
 
-  //  viewProfile() {
-  //   this.router.navigate(['/profile']);
-  //  }
-
    async viewProfile() {
     const modal = await this.modalCtrl.create({
       component: ProfilePage,
@@ -35,7 +31,4 @@ export class SettingsPage implements OnInit {
     });
     return await modal.present();
   }
-  // logoutAction() {
-  //   this.authService.logout();
-  // }
 }

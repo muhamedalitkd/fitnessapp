@@ -15,6 +15,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginPage implements OnInit {
   email: string;
   password: string;
+  userName: string;
+  isAdmin: false;
 
   constructor(
     public modalCtrl: ModalController,
@@ -34,8 +36,8 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    if(this.email && this.password) {
-      this.auth.signIn(this.email, this.password);
+    if(this.userName && this.password) {
+      this.auth.signIn(this.userName, this.password);
     } else {
       this.toast('Enter your email and password', 'warning');
     }
