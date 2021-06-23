@@ -6,3 +6,24 @@ ion-slide{
     font-weight: bold;
   }
 }
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 150%;
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+h3 {
+  margin-top: 105px;
+}
+
+ion-text {
+  color: crimson;
+  font-weight: bold;
+}

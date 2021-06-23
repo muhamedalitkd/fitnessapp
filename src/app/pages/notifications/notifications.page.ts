@@ -26,6 +26,10 @@ export class NotificationsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getUserList();
+  }
+
+  getUserList() {
     this.auth.user$.subscribe(user => {
       this.userID = user.userID;
       this.name = user.userName;

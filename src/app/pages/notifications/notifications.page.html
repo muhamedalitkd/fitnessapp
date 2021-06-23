@@ -9,5 +9,5 @@
     <ion-label position="stacked">Link for your video</ion-label>
     <ion-input required type="text" [(ngModel)]="videoLink" name="videoLink"></ion-input>
   </ion-item>
-  <ion-button (click)="upload()">Upload</ion-button>
+  <ion-button (click)="upload()" [disabled]="!videoLink">Upload</ion-button>
 </ion-content>
