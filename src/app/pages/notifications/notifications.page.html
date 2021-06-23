@@ -22,6 +22,8 @@
   <ion-item>
     <ion-textarea [(ngModel)]="description" name="description" placeholder="Enter description here..."></ion-textarea>
   </ion-item>
-  <ion-button (click)="upload2()" [disabled]="!videoLink2 || !description || !title">Upload 2</ion-button>
+  <div class="ion-text-center ion-padding-top">
+    <ion-button (click)="upload2()" [disabled]="!videoLink2 || !description || !title">Upload <ion-icon class="ion-padding-start" name="cloud-upload-outline"></ion-icon></ion-button>
+  </div>
 </form>
 </ion-content>

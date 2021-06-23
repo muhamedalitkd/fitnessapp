@@ -6,5 +6,20 @@
 
 <ion-content>
   <ion-button class="ion-margin" expand="block" shape="round" (click)="viewProfile()">My Profile</ion-button>
-  <ion-button class="logout-btn" shape="round" (click)="logout()">Logout</ion-button>
+  <ion-button class="logout-btn" shape="round" (click)="logout()">Logout<ion-icon class="ion-padding-start" name="log-out-outline"></ion-icon></ion-button>
+
+  <!-- <ion-card-content class="info-content">
+  <ion-card class="info">
+    <form>
+      <ion-item>
+      <ion-label position="floating" class="ion-text-center">Enter your birth of date</ion-label>
+      <ion-datetime displayFormat="DD/M/YYYY" min="1800-01-01" [(ngModel)]="birthDate" name="birthDate"></ion-datetime>
+      </ion-item>
+    </form>
+  </ion-card>
+  <div class="ion-text-center">
+    <ion-button size="small" (click)="submit()">Submit</ion-button>
+  </div>
+</ion-card-content> -->
+
 </ion-content>

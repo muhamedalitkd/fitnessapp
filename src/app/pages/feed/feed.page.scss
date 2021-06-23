@@ -5,6 +5,11 @@ video {
   vertical-align: middle;
 }
 
+.content {
+  // background-image: linear-gradient(197deg, rgb(121, 22, 22) 0%, rgb(187, 116, 116) 13.5%, rgb(141, 197, 9) 33.33%, rgb(218, 13, 13) 100%) !important
+  background-image: linear-gradient(197deg, rgba(100,100,100,1) 0%, rgba(63,63,63,1) 13.5%, rgba(29,29,29,1) 33.33%, rgba(0,0,0,1) 100%) !important
+}
+
 .card-content {
   padding-left: 0px !important;
   padding-right: 0px !important;
