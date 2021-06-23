@@ -16,6 +16,9 @@ export class NotificationsPage implements OnInit {
   email: string;
   phone: string;
   videoLink: string;
+  videoLink2: string;
+  description: string;
+  title: string;
   user: any;
 
   constructor(
@@ -42,7 +45,7 @@ export class NotificationsPage implements OnInit {
     })
   }
 
-  async upload() {
+  async upload2() {
     const loading = await this.loadginCtrl.create({
       message: 'Uploading...',
       spinner: 'crescent',
@@ -50,8 +53,15 @@ export class NotificationsPage implements OnInit {
     })
 
     loading.present();
-    this.afs.collection('user').doc(this.userID).set(
-      {'videoLink': this.videoLink}, {merge: true}).then(() => {
+    this.afs.collection('posts').add(
+      {
+        'videoLink': this.videoLink2,
+        'userID': this.userID,
+        'description': this.description,
+        'title': this.title,
+        'userName': this.name,
+        'uploadedDate': Date.now()
+      }).then(() => {
       console.log("The link is added " + this.userID);
       return null;
     }).then(() => {
@@ -62,6 +72,27 @@ export class NotificationsPage implements OnInit {
       this.toast(error.message, 'danger');
     })
   };
+
+  // async upload() {
+  //   const loading = await this.loadginCtrl.create({
+  //     message: 'Uploading...',
+  //     spinner: 'crescent',
+  //     showBackdrop: true
+  //   })
+
+  //   loading.present();
+  //   this.afs.collection('user').doc(this.userID).set(
+  //     {'videoLink': this.videoLink}, {merge: true}).then(() => {
+  //     console.log("The link is added " + this.userID);
+  //     return null;
+  //   }).then(() => {
+  //     loading.dismiss();
+  //     this.toast('Upload success', 'success');
+  //   }).catch(error => {
+  //     loading.dismiss();
+  //     this.toast(error.message, 'danger');
+  //   })
+  // };
 
   async toast(message, status) {
     const toast = await this.toastr.create({

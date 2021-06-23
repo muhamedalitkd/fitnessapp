@@ -5,9 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label position="stacked">Link for your video</ion-label>
     <ion-input required type="text" [(ngModel)]="videoLink" name="videoLink"></ion-input>
   </ion-item>
-  <ion-button (click)="upload()" [disabled]="!videoLink">Upload</ion-button>
+  <ion-button (click)="upload()" [disabled]="!videoLink">Upload</ion-button> -->
+<form>
+  <ion-item>
+    <ion-label position="stacked">URL link for your video</ion-label>
+    <ion-input required type="url" [(ngModel)]="videoLink2" name="videoLink2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input required type="text" [(ngModel)]="title" name="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="description" name="description" placeholder="Enter description here..."></ion-textarea>
+  </ion-item>
+  <ion-button (click)="upload2()" [disabled]="!videoLink2 || !description || !title">Upload 2</ion-button>
+</form>
 </ion-content>

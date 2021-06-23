@@ -1,5 +1,4 @@
 import { Component, OnInit, QueryList, ViewChild } from '@angular/core';
-import data from './feed.json';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,12 +18,14 @@ export class FeedPage implements OnInit {
     phone: string
     videoLink: string;
     usersCollections: any;
+    postsCollection: any;
     posts$: Observable<any[]>;
 
   constructor(private dom: DomSanitizer,
     private afs: AngularFirestore,
     private auth: AuthService) {
       this.usersCollections = this.afs.collection('user');
+      this.postsCollection = this.afs.collection('posts');
     }
 
   ngOnInit() {
@@ -41,7 +42,7 @@ export class FeedPage implements OnInit {
       this.videoLink = user.videoLink;
     })
 
-    this.posts$ = this.getUsers().pipe(
+    this.posts$ = this.getPosts().pipe(
       tap(res => {
         console.log(res);
       })
@@ -50,6 +51,10 @@ export class FeedPage implements OnInit {
 
   getUsers() {
     return this.usersCollections.valueChanges();
+  }
+
+  getPosts() {
+    return this.postsCollection.valueChanges();
   }
 
   sanitizer(videoLink) {

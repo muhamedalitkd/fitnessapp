@@ -10,10 +10,11 @@ video {
   padding-right: 0px !important;
 }
 
-// .bar {
-//   z-index: 2;
-//   width: 100%;
-//   text-align: center;
-//   transform: translate(0%, -100%);
-//   background-image: url('../../../assets/images/gradient.png');
-// }
+.date {
+  font-size: 12px;
+  float: right;
+}
+
+.desc {
+  box-shadow:none !important
+}
