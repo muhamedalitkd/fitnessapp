@@ -66,6 +66,9 @@ export class NotificationsPage implements OnInit {
       return null;
     }).then(() => {
       loading.dismiss();
+      this.videoLink2 = '';
+      this.title = '',
+      this.description = '';
       this.toast('Upload success', 'success');
     }).catch(error => {
       loading.dismiss();
