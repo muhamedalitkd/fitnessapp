@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-feed',
@@ -44,6 +44,8 @@ export class FeedPage implements OnInit {
     })
 
     this.posts$ = this.getPosts().pipe(
+      map((data: Array<{uploadedDate: string, description: string, title: string, userID: string, userName: string, videoLink: string;}>) =>
+      data.sort((a, b) => a.uploadedDate <= b.uploadedDate ? -1 : 1).reverse()),
       tap(res => {
         console.log(res);
       })
