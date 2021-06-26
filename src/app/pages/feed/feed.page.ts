@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,6 +11,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
+  @Input('expanded') expanded;
     user: any;
     userID: string;
     name: string;
