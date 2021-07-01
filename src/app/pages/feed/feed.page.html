@@ -10,9 +10,14 @@
       <ion-card class="ion-no-margin ion-no-padding">
         <ng-container *ngIf="posts.length > 0, else skeleton">
           <ion-card-content *ngIf="post.videoLink" class="ion-no-padding ion-no-margin">
-            <ion-card-header>
-              <ion-badge color="primary">{{post.userName}}</ion-badge>
-            </ion-card-header>
+            <ion-row class="ion-no-padding ion-no-margin">
+              <ion-col class="ion-no-margin ion-no-padding">
+              <ion-card-header>
+                <ion-badge color="primary">{{post.userName}}</ion-badge>
+              </ion-card-header>
+            </ion-col>
+
+            </ion-row>
               <div class="ion-text-center">
                 <iframe width="255" height="170" [src]="sanitizer(post.videoLink)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
@@ -20,8 +25,10 @@
                   <ion-col>
                     <ion-card-subtitle color="dark" class="ion-padding-start">{{post.title | uppercase}}</ion-card-subtitle>
                   </ion-col>
-                  <ion-col>
-                    <p class="date ion-padding-end">{{post.uploadedDate | date}}</p>
+                  <ion-col size="2">
+                    <ion-badge color="danger" class=" ion-margin-end delete" (click)="deletePost()">
+                      <ion-icon size="medium" name="trash-outline"></ion-icon>
+                    </ion-badge>
                   </ion-col>
                 </ion-row>
                   <ion-item class="desc ion-no-padding" [hidden]="!post.expanded">

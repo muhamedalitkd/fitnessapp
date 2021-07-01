@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Posts } from 'src/app/interfaces/posts';
 
 @Component({
   selector: 'app-feed',
@@ -20,7 +21,9 @@ export class FeedPage implements OnInit {
     videoLink: string;
     usersCollections: any;
     postsCollection: any;
-    posts$: Observable<any[]>;
+    posts$: Observable<Posts[]>;
+    postID: any;
+    posts: any;
 
   constructor(private dom: DomSanitizer,
     private afs: AngularFirestore,
@@ -30,6 +33,7 @@ export class FeedPage implements OnInit {
     }
 
   ngOnInit() {
+    this.deletePost();
     // this.auth.user$.subscribe(user => {
     //   this.user = user
     //   console.log(user);
@@ -57,7 +61,11 @@ export class FeedPage implements OnInit {
   }
 
   getPosts() {
-    return this.postsCollection.valueChanges();
+    return this.postsCollection.valueChanges({ idField: 'postID' });
+  }
+
+  deletePost() {
+
   }
 
   sanitizer(videoLink) {
