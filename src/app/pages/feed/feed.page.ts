@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Posts } from 'src/app/interfaces/posts';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-feed',
@@ -24,10 +25,12 @@ export class FeedPage implements OnInit {
     posts$: Observable<Posts[]>;
     postID: any;
     posts: any;
+    public isAdmin = false;
 
   constructor(private dom: DomSanitizer,
     private afs: AngularFirestore,
-    private auth: AuthService) {
+    private auth: AuthService
+    ) {
       this.usersCollections = this.afs.collection('user');
       this.postsCollection = this.afs.collection('posts');
     }
@@ -38,6 +41,17 @@ export class FeedPage implements OnInit {
     //   this.user = user
     //   console.log(user);
     // })
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        firebase
+          .firestore()
+          .doc(`/user/${user.uid}`)
+          .get()
+          .then(userProfileSnapshot => {
+            this.isAdmin = userProfileSnapshot.data().isAdmin;
+          })
+      }
+    })
 
     this.auth.user$.subscribe(user => {
       this.userID = user.userID;

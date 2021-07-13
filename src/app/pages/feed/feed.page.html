@@ -26,9 +26,11 @@
                     <ion-card-subtitle color="dark" class="ion-padding-start">{{post.title | uppercase}}</ion-card-subtitle>
                   </ion-col>
                   <ion-col size="2">
+                    <ng-container *ngIf="isAdmin">
                     <ion-badge color="danger" class=" ion-margin-end delete" (click)="deletePost()">
                       <ion-icon size="medium" name="trash-outline"></ion-icon>
                     </ion-badge>
+                  </ng-container>
                   </ion-col>
                 </ion-row>
                   <ion-item class="desc ion-no-padding" [hidden]="!post.expanded">
