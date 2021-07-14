@@ -1,4 +1,3 @@
-import { HomeGuard } from './../guards/home.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

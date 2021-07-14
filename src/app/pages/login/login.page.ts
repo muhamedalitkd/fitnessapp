@@ -1,9 +1,5 @@
 import { ForgotPasswordPage } from './../forgot-password/forgot-password.page';
 import { ModalController, ToastController } from '@ionic/angular';
-import { ToastService } from './../../services/toast.service';
-import { AuthConstants } from './../../config/auth-constants';
-import { StorageService } from './../../services/storage.service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
