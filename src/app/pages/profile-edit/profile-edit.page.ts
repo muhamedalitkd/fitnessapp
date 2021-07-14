@@ -48,7 +48,6 @@ export class ProfileEditPage implements OnInit {
     loading.present();
     this.afs.collection('user').doc(this.userID).set({
       'userName': this.name,
-      'userEmail': this.email,
       'userPhone': this.phone,
       'editAt': Date.now()
     },{merge: true})
