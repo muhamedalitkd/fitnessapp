@@ -10,6 +10,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
+
 ];
 @NgModule({
   imports: [

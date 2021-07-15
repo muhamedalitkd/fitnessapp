@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="ion-margin">
+      <ion-title style="text-align:center">Post Page</ion-title>
+        <ion-button (click)="closeModal()">
+          <ion-icon size="large" name="close-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-no-padding ion-no-margin">
+    <ion-col class="ion-no-margin ion-no-padding">
+    <ion-card-header class="ion-text-center">
+      <ion-badge>{{post.userName}}</ion-badge>
+    </ion-card-header>
+  </ion-col>
+  </ion-row>
+    <div class="ion-text-center ion-no-padding ion-no-margin">
+      <iframe width="255" height="170" [src]="sanitizer(post.videoLink)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+      <ion-row class="ion-justify-content-between">
+        <ion-col class="ion-text-center">
+          <ion-card-subtitle style="font-weight: 800;" class="ion-padding-start">{{post.title | uppercase}}</ion-card-subtitle>
+        </ion-col>
+      </ion-row>
+      <ion-item class="desc ion-no-padding">
+        <ion-text class="ion-margin">{{post.description}}</ion-text>
+      </ion-item>
+      <ng-container *ngIf="isAdmin">
+      <ion-button expand="block" fill="outline" color="danger" (click)="deletePost()">
+        <ion-icon name="trash" slot="start"></ion-icon>
+        Delete
+      </ion-button>
+      </ng-container>
+
+</ion-content>

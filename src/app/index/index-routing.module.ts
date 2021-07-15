@@ -37,6 +37,11 @@ const routes: Routes = [
         ,canActivate: [AuthGuard]
       },
       {
+        path: 'post/:id',
+        loadChildren: () => import('../pages/post/post.module').then( m => m.PostPageModule)
+        ,canActivate: [AuthGuard]
+      },
+      {
         path: '',
         redirectTo: '/home/feed',
         pathMatch: 'full'

@@ -6,17 +6,15 @@
 
 <ion-content>
   <ion-row class="content">
-    <ion-col col-6 *ngFor="let post of posts$ | async as posts">
+    <ion-col col-6 *ngFor="let post of (posts | async)">
       <ion-card class="ion-no-margin ion-no-padding">
-        <ng-container *ngIf="posts.length > 0, else skeleton">
           <ion-card-content *ngIf="post.videoLink" class="ion-no-padding ion-no-margin">
             <ion-row class="ion-no-padding ion-no-margin">
               <ion-col class="ion-no-margin ion-no-padding">
-              <ion-card-header>
-                <ion-badge color="primary">{{post.userName}}</ion-badge>
-              </ion-card-header>
-            </ion-col>
-
+                <ion-card-header>
+                  <ion-badge color="primary">{{post.userName}}</ion-badge>
+                </ion-card-header>
+              </ion-col>
             </ion-row>
               <div class="ion-text-center">
                 <iframe width="255" height="170" [src]="sanitizer(post.videoLink)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -26,11 +24,9 @@
                     <ion-card-subtitle color="dark" class="ion-padding-start">{{post.title | uppercase}}</ion-card-subtitle>
                   </ion-col>
                   <ion-col size="2">
-                    <ng-container *ngIf="isAdmin">
-                    <ion-badge color="danger" class=" ion-margin-end delete" (click)="deletePost()">
-                      <ion-icon size="medium" name="trash-outline"></ion-icon>
-                    </ion-badge>
-                  </ng-container>
+                    <ion-button size="small" shape="round" color="tertiary" class="more ion-no-margin" [routerLink]="['/post', post.id]">
+                      more
+                    </ion-button>
                   </ion-col>
                 </ion-row>
                   <ion-item class="desc ion-no-padding" [hidden]="!post.expanded">
@@ -40,28 +36,7 @@
                     <ion-icon color="secondary" *ngIf="!post.expanded" name="chevron-down-outline"></ion-icon>
                     <ion-icon color="warning" *ngIf="post.expanded" name="chevron-up-outline"></ion-icon>
                   </div>
-            </ion-card-content>
-        </ng-container>
-      <ng-template #skeleton>
-        <ion-list>
-          <ion-item *ngFor="let item of [1, 2, 3, 4, 5]">
-            <ion-thumbnail slot="start">
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-thumbnail>
-            <ion-label>
-              <h3>
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </h3>
-              <p>
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </p>
-              <p>
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </ng-template>
+              </ion-card-content>
     </ion-card>
   </ion-col>
 </ion-row>
