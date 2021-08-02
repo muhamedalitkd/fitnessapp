@@ -18,17 +18,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FeedPage implements OnInit {
   @Input('expanded') expanded;
-    // user: any;
-    // userID: string;
-    // name: string;
-    // email: string
-    // phone: string
-    // videoLink: string;
     usersCollections: any;
     postsCollection: any;
-    // posts$: Observable<Posts[]>;
 
-    //for delete function
     public posts: Observable<Post[]>
 
   constructor(private dom: DomSanitizer,
@@ -47,14 +39,6 @@ export class FeedPage implements OnInit {
         console.log(res);
       })
     );
-
-    // this.auth.user$.subscribe(user => {
-    //   this.userID = user.userID;
-    //   this.name = user.userName;
-    //   this.email = user.userEmail;
-    //   this.phone = user.userPhone;
-    //   this.videoLink = user.videoLink;
-    // })
   }
 
   getUsers() {
